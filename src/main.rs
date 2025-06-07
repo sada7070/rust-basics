@@ -8,13 +8,13 @@ fn main() {
     println!("x: {}, y: {}, z: {}", x, y, z);
     println!("{}, {}, {}", x, y, z);
 
-    // boolean in rust
+    // boolean and conditional rendering(if else) in rust
     let is_male = true;
     let mut is_above_18 = false;                        // 'mut' to make the variable  mutable.
 
     if is_male {
         println!("You are male!");
-    } else {
+    } else if !is_male {
         println!("You are female!");
     }
 
@@ -44,4 +44,29 @@ fn main() {
          None => println!("No character at the requested index."),
      }
 
+     // for loop in rust
+
+     for  i in 0..10 {
+        println!("{}", i);
+     }
+
+     // function
+     let sentence = String::from("rust basics from Harlirat");
+     let first_word = get_first_word(sentence);
+
+     println!("{}", first_word);
+
+}
+
+fn get_first_word(sentence: String) -> String {
+    let mut ans = String::from("");
+    for char in sentence.chars() {
+        ans.push_str(char.to_string().as_str());
+
+        // ending loop immideatly when a white space occured so that we get onlt first word.
+        if char == ' ' {
+            break;
+        }
+    }
+    return  ans;
 }
