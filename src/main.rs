@@ -126,43 +126,71 @@
 //     s.push_str(" world");
 // }
 
-// Structs in rust(similar to objects in js/ts)
+// // Structs in rust(similar to objects in js/ts)
 
-// first defining the object values
-struct User {                                       // example 1
-    active: bool,
-    username: String,
-    email: String,
-    sign_in_sount: u64
+// // first defining the object values
+// struct User {                                       // example 1
+//     active: bool,
+//     username: String,
+//     email: String,
+//     sign_in_sount: u64
+// }
+
+// struct Rect {                                       // example 2 with struct implimentation
+//     height: u32,
+//     width: u32,
+// }
+
+// impl Rect {
+//     fn area(&self) -> u32 {
+//         self.height * self.width
+//     }
+// }
+
+// fn main() {
+//     let rect = Rect {                           // struct implementation
+//         width: 10,
+//         height: 5,
+//     };
+
+//     println!("Area of a rectangle: {}", rect.area());
+
+
+//     // example 1
+//     let user1 = User{
+//         active: true,
+//         username: String::from("Sada"),
+//         email: String::from("sada@gmail.com"),
+//         sign_in_sount: 10
+//     };
+
+//     println!("User1 UserName is: {}", user1.username);
+// }
+
+
+
+// enum & patter matching in rust
+
+enum Shape {
+    Circle(f64),
+    Rectangle(f64, f64),
+    Square(f64),
 }
 
-struct Rect {                                       // example 2 with struct implimentation
-    height: u32,
-    width: u32,
-}
-
-impl Rect {
-    fn area(&self) -> u32 {
-        self.height * self.width
+fn calculate_area(shape: Shape) -> f64 {
+    match shape {
+        Shape::Circle(radius) => 3.14 * radius * radius,
+        Shape::Rectangle(height, width) => height * width,
+        Shape::Square(height) => height * height
     }
 }
 
 fn main() {
-    let rect = Rect {                           // struct implementation
-        width: 10,
-        height: 5,
-    };
+    let circle = Shape::Circle(5.0);
+    let rectangle = Shape::Rectangle(5.0, 10.0);
+    let square = Shape::Square(5.0);
 
-    println!("Area of a rectangle: {}", rect.area());
-
-
-    // example 1
-    let user1 = User{
-        active: true,
-        username: String::from("Sada"),
-        email: String::from("sada@gmail.com"),
-        sign_in_sount: 10
-    };
-
-    println!("User1 UserName is: {}", user1.username);
+    println!("Area of Circle: {}", calculate_area(circle));
+    println!("Area of Reactangle: {}", calculate_area(rectangle));
+    println!("Area of Square: {}", calculate_area(square));
 }
