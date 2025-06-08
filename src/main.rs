@@ -112,17 +112,57 @@
 
 // }
 
-//mutation and references
+// mutation and references
+// fn main() {
+//     let mut str = String::from("hello");
+//     let s2 = &mut str;
+//     //borrow_fn(&mut str);                                                      // once the variable got mutable reference, no other variable can get any type of references
 
-fn main() {
-    let mut str = String::from("hello");
-    let s2 = &mut str;
-    //borrow_fn(&mut str);                                                      // once the variable got mutable reference, no other variable can get any type of references
+//     //println!("{}", str);
+//     println!("{}", s2);
+// }
 
-    //println!("{}", str);
-    println!("{}", s2);
+// fn borrow_fn(s: &mut String) {
+//     s.push_str(" world");
+// }
+
+// Structs in rust(similar to objects in js/ts)
+
+// first defining the object values
+struct User {                                       // example 1
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_sount: u64
 }
 
-fn borrow_fn(s: &mut String) {
-    s.push_str(" world");
+struct Rect {                                       // example 2 with struct implimentation
+    height: u32,
+    width: u32,
+}
+
+impl Rect {
+    fn area(&self) -> u32 {
+        self.height * self.width
+    }
+}
+
+fn main() {
+    let rect = Rect {                           // struct implementation
+        width: 10,
+        height: 5,
+    };
+
+    println!("Area of a rectangle: {}", rect.area());
+
+
+    // example 1
+    let user1 = User{
+        active: true,
+        username: String::from("Sada"),
+        email: String::from("sada@gmail.com"),
+        sign_in_sount: 10
+    };
+
+    println!("User1 UserName is: {}", user1.username);
 }
