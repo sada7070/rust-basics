@@ -73,41 +73,56 @@
 
 
 // heap v/s stack
+// fn main() {
+//     stack_fn();
+//     heap_fn();
+//     update_fn();
+// }
+
+// fn stack_fn() {                                                             // just stored in stack
+//     let a = 5;
+//     let b = 2;
+//     let ans = a + b;
+//     println!("Sum: {}", ans);
+// }
+
+// fn heap_fn() {                                                              // stored in heap since string can be  changed during run time
+//     let str1 = String::from("Hello");
+//     let str2 = String::from("World!");
+
+//     let concat_string = format!("{} {}", str1, str2);
+
+//     println!("Concat string is: {}", concat_string);
+// }
+
+// fn update_fn() {
+//     let mut s = String::from("Hello everyone!");
+//     println!("Before update: {}", s);
+//     println!("capacity: {}, length: {}, pointer: {:p}", s.capacity(), s.len(), s.as_ptr());
+
+//     s.push_str(" How are you guys?");
+//     println!("Updated str: {}", s);
+//     println!("capacity: {}, length: {}, pointer: {:p}", s.capacity(), s.len(), s.as_ptr());
+
+//     for _ in 1..1000 {
+//         s.push_str(" How are you guys?");
+//         //println!("Updated str: {}", s);
+//         println!("capacity: {}, length: {}, pointer: {:p}", s.capacity(), s.len(), s.as_ptr());
+//     }
+
+// }
+
+//mutation and references
+
 fn main() {
-    stack_fn();
-    heap_fn();
-    update_fn();
+    let mut str = String::from("hello");
+    let s2 = &mut str;
+    //borrow_fn(&mut str);                                                      // once the variable got mutable reference, no other variable can get any type of references
+
+    //println!("{}", str);
+    println!("{}", s2);
 }
 
-fn stack_fn() {                                                             // just stored in stack
-    let a = 5;
-    let b = 2;
-    let ans = a + b;
-    println!("Sum: {}", ans);
-}
-
-fn heap_fn() {                                                              // stored in heap since string can be  changed during run time
-    let str1 = String::from("Hello");
-    let str2 = String::from("World!");
-
-    let concat_string = format!("{} {}", str1, str2);
-
-    println!("Concat string is: {}", concat_string);
-}
-
-fn update_fn() {
-    let mut s = String::from("Hello everyone!");
-    println!("Before update: {}", s);
-    println!("capacity: {}, length: {}, pointer: {:p}", s.capacity(), s.len(), s.as_ptr());
-
-    s.push_str(" How are you guys?");
-    println!("Updated str: {}", s);
-    println!("capacity: {}, length: {}, pointer: {:p}", s.capacity(), s.len(), s.as_ptr());
-
-    for _ in 1..1000 {
-        s.push_str(" How are you guys?");
-        //println!("Updated str: {}", s);
-        println!("capacity: {}, length: {}, pointer: {:p}", s.capacity(), s.len(), s.as_ptr());
-    }
-
+fn borrow_fn(s: &mut String) {
+    s.push_str(" world");
 }
