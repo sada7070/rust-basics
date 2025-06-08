@@ -169,28 +169,48 @@
 
 
 
-// enum & patter matching in rust
+// // enum & patter matching in rust
 
-enum Shape {
-    Circle(f64),
-    Rectangle(f64, f64),
-    Square(f64),
-}
+// enum Shape {
+//     Circle(f64),
+//     Rectangle(f64, f64),
+//     Square(f64),
+// }
 
-fn calculate_area(shape: Shape) -> f64 {
-    match shape {
-        Shape::Circle(radius) => 3.14 * radius * radius,
-        Shape::Rectangle(height, width) => height * width,
-        Shape::Square(height) => height * height
-    }
-}
+// fn calculate_area(shape: Shape) -> f64 {
+//     match shape {
+//         Shape::Circle(radius) => 3.14 * radius * radius,
+//         Shape::Rectangle(height, width) => height * width,
+//         Shape::Square(height) => height * height
+//     }
+// }
+
+// fn main() {
+//     let circle = Shape::Circle(5.0);
+//     let rectangle = Shape::Rectangle(5.0, 10.0);
+//     let square = Shape::Square(5.0);
+
+//     println!("Area of Circle: {}", calculate_area(circle));
+//     println!("Area of Reactangle: {}", calculate_area(rectangle));
+//     println!("Area of Square: {}", calculate_area(square));
+// }
+
+
+// error handlig in rust using enum
+use std::fs;
 
 fn main() {
-    let circle = Shape::Circle(5.0);
-    let rectangle = Shape::Rectangle(5.0, 10.0);
-    let square = Shape::Square(5.0);
+    let res = fs::read_to_string("example.txt");
 
-    println!("Area of Circle: {}", calculate_area(circle));
-    println!("Area of Reactangle: {}", calculate_area(rectangle));
-    println!("Area of Square: {}", calculate_area(square));
+    // this is similar to try catch in js
+    match  res {
+        Ok(content) => {
+            println!("Content is: {}", content);
+        },
+        Err(err) => {
+            println!("{}", err);
+        }
+    }
+
+    println!("After error handling");
 }
