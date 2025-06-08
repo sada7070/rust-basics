@@ -196,21 +196,43 @@
 // }
 
 
-// error handlig in rust using enum
-use std::fs;
+// // error handlig in rust using enum
+// use std::fs;
 
-fn main() {
-    let res = fs::read_to_string("example.txt");
+// fn main() {
+//     let res = fs::read_to_string("example.txt");
 
-    // this is similar to try catch in js
-    match  res {
-        Ok(content) => {
-            println!("Content is: {}", content);
-        },
-        Err(err) => {
-            println!("{}", err);
+//     // this is similar to try catch in js
+//     match  res {
+//         Ok(content) => {
+//             println!("Content is: {}", content);
+//         },
+//         Err(err) => {
+//             println!("{}", err);
+//         }
+//     }
+
+//     println!("After error handling");
+// }
+
+
+
+// there is no null in rust, instead we use 'Option' which as 'Some' and 'None'
+
+fn find_first_a(s: String) -> Option<i32> {
+    for(index, character) in s.chars().enumerate() {
+        if character == 'a' {
+            return Some(index as i32);
         }
     }
+    return None;
+}
 
-    println!("After error handling");
+fn main() {
+    let str = String::from("sada");
+
+    match find_first_a(str) {
+        Some(index) => println!("The first 'a' found at index: {}", index),
+        None => println!("The string does not contain character 'a' in it."),               // without returning 'null' we should return something to avoid error which may cause.
+    }
 }
