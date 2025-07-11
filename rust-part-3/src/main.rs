@@ -34,11 +34,49 @@
 //     println!("{}", fibonacci(4));
 // }
 
-fn get_str_len(s: &str) -> usize {
-    s.chars().count()
+// fn get_str_len(s: &str) -> usize {
+//     s.chars().count()
+// }
+
+// fn main() {
+//     let my_string = String::from("Hello world!!");
+//     println!("{}", get_str_len(&my_string));
+// }
+
+//struct
+
+// struct User {
+//     first_name: String,
+//     last_name: String,
+//     age: i32,
+// }
+
+// fn main() {
+//     let user = User{
+//         first_name: String::from("Sada"),
+//         last_name: String::from("shiva"),
+//         age: 23,
+//     };
+
+//     println!("User details, firstName: {}, lastName: {}, age: {}", user.first_name, user.last_name, user.age);
+// }
+
+struct Rect {
+    height: u32,
+    width: u32,
+}
+
+impl Rect {
+    fn area(&self) -> u32 {
+        self.height * self.width
+    }
 }
 
 fn main() {
-    let my_string = String::from("Hello world!!");
-    println!("{}", get_str_len(&my_string));
+    let rect = Rect {
+        height: 3,
+        width: 6
+    };
+        
+    println!("Area of rect is: {}", rect.area());
 }
