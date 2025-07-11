@@ -126,19 +126,31 @@
 
 
 
-// enum with result
+// // enum with result
 
-use std::fs;        // importing fs library(read_to_string is from fs library)
+// use std::fs;        // importing fs library(read_to_string is from fs library)
 
+// fn main() {
+//     let file_content = fs::read_to_string("src/a.txt");
+
+//     match file_content {
+//         Ok(value) => {
+//             println!("{}", value);
+//         },
+//         Err(error) => {
+//             println!("{}", error);
+//         },
+//     }
+// }
+
+
+
+// package manager(we use cargo in rust to install packages eg, here we used 'cargo add chrono' which is says time)
+
+use chrono::{self, Local, Utc};
 fn main() {
-    let file_content = fs::read_to_string("src/a.txt");
+    let current_time = Local::now();
+    println!("Current time is: {}", current_time);
 
-    match file_content {
-        Ok(value) => {
-            println!("{}", value);
-        },
-        Err(error) => {
-            println!("{}", error);
-        },
-    }
+    println!("Current time in UTC: {}", Utc::now());
 }
