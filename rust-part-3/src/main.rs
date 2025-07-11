@@ -61,22 +61,84 @@
 //     println!("User details, firstName: {}, lastName: {}, age: {}", user.first_name, user.last_name, user.age);
 // }
 
-struct Rect {
-    height: u32,
-    width: u32,
-}
+// struct Rect {
+//     height: u32,
+//     width: u32,
+// }
 
-impl Rect {
-    fn area(&self) -> u32 {
-        self.height * self.width
-    }
-}
+// impl Rect {
+//     fn area(&self) -> u32 {
+//         self.height * self.width
+//     }
+// }
+
+// fn main() {
+//     let rect = Rect {
+//         height: 3,
+//         width: 6
+//     };
+        
+//     println!("Area of rect is: {}", rect.area());
+// }
+
+// enum Shape {
+//     Rectangle(f64, f64),
+//     Circle(f64),
+// }
+
+// fn calculate_area(shape: Shape) -> f64 {
+//     match shape{
+//         Shape::Rectangle(l, b) => l * b,
+//         Shape::Circle(r) => 3.14 * r * r,
+//     }
+// }
+
+// fn main() {
+//     let rect = Shape::Rectangle(3.0, 6.0);
+//     println!("Area of Reactangle is: {}", calculate_area(rect));
+
+//     let circle = Shape::Circle(5.0);
+//     println!("Area of circle is: {}", calculate_area(circle));
+// }
+
+
+
+// //enum with options
+
+// fn find_first_a(s: String) -> Option<i32> {
+//     for (index, char) in s.chars().enumerate() {
+//         if char == 'a' {
+//             return Some(index as i32);
+//         }
+//     }
+
+//     return None;
+// }
+
+// fn main() {
+//     let index = find_first_a(String::from("skjvanc"));
+    
+//     match index {
+//         Some(value) => println!("'a' found at index: {}", value),
+//         None => println!("'a' not found in the given string."),
+//     }
+// }
+
+
+
+// enum with result
+
+use std::fs;        // importing fs library(read_to_string is from fs library)
 
 fn main() {
-    let rect = Rect {
-        height: 3,
-        width: 6
-    };
-        
-    println!("Area of rect is: {}", rect.area());
+    let file_content = fs::read_to_string("src/a.txt");
+
+    match file_content {
+        Ok(value) => {
+            println!("{}", value);
+        },
+        Err(error) => {
+            println!("{}", error);
+        },
+    }
 }
