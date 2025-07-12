@@ -145,12 +145,29 @@
 
 
 
-// package manager(we use cargo in rust to install packages eg, here we used 'cargo add chrono' which is says time)
+// // package manager(we use cargo in rust to install packages eg, here we used 'cargo add chrono' which is says time)
 
-use chrono::{self, Local, Utc};
+// use chrono::{self, Local, Utc};
+// fn main() {
+//     let current_time = Local::now();
+//     println!("Current time is: {}", current_time);
+
+//     println!("Current time in UTC: {}", Utc::now());
+// }
+
+
+
+// ownership, moveing, borrowing, references
+
 fn main() {
-    let current_time = Local::now();
-    println!("Current time is: {}", current_time);
+    let mut s1 = String::from("Sada");
 
-    println!("Current time in UTC: {}", Utc::now());
+    print_fn(&mut s1);
+
+    println!("{}", s1);
+}
+
+fn print_fn(s2: &mut String) {
+    s2.push_str(" shiva");
+    println!("{}", s2);
 }
